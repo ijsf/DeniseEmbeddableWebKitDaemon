@@ -10,6 +10,7 @@
 		E39D6F6B20DBF4D9008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6A20DBF4D9008FD5C5 /* main.cpp */; };
 		E39D6F6F20DC00A0008FD5C5 /* XPCService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6D20DC00A0008FD5C5 /* XPCService.cpp */; };
 		E39D6F8420DC03AE008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F8320DC03AE008FD5C5 /* main.cpp */; };
+		E39D6F8720DC0441008FD5C5 /* XPCClient.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F8520DC0441008FD5C5 /* XPCClient.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,6 +46,8 @@
 		E39D6F6E20DC00A0008FD5C5 /* XPCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCService.h; sourceTree = "<group>"; };
 		E39D6F7620DC0303008FD5C5 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39D6F8320DC03AE008FD5C5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E39D6F8520DC0441008FD5C5 /* XPCClient.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XPCClient.cpp; sourceTree = "<group>"; };
+		E39D6F8620DC0441008FD5C5 /* XPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCClient.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +113,8 @@
 		E39D6F8220DC03A1008FD5C5 /* Client */ = {
 			isa = PBXGroup;
 			children = (
+				E39D6F8520DC0441008FD5C5 /* XPCClient.cpp */,
+				E39D6F8620DC0441008FD5C5 /* XPCClient.h */,
 				E39D6F8320DC03AE008FD5C5 /* main.cpp */,
 			);
 			path = Client;
@@ -206,6 +211,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E39D6F8420DC03AE008FD5C5 /* main.cpp in Sources */,
+				E39D6F8720DC0441008FD5C5 /* XPCClient.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
