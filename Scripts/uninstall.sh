@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Unload the daemon
-launchctl unload /Library/LaunchDaemons/com.example.daemon.plist
+launchctl unload /Library/LaunchDaemons/com.denise.daemon.plist
 
 # Remove the daemon's launchd.plist
-rm /Library/LaunchDaemons/com.example.daemon.plist
+rm /Library/LaunchDaemons/com.denise.daemon.plist
 
 # Remove the daemon's executable
-rm /Library/PrivilegedHelperTools/LaunchDaemon
+rm /Library/PrivilegedHelperTools/com.denise.daemon
