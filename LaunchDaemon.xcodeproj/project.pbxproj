@@ -24,7 +24,6 @@
 		E39D6F8420DC03AE008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F8320DC03AE008FD5C5 /* main.cpp */; };
 		E39D6F9D20DC5AA8008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6A20DBF4D9008FD5C5 /* main.cpp */; };
 		E39D6F9E20DC5AA8008FD5C5 /* XPCService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6D20DC00A0008FD5C5 /* XPCService.cpp */; };
-		E39D6FA220DC7023008FD5C5 /* BrowserImpl.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6FA120DC7023008FD5C5 /* BrowserImpl.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -52,7 +51,6 @@
 		E39D6F8320DC03AE008FD5C5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E39D6F8620DC0441008FD5C5 /* XPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCClient.h; sourceTree = "<group>"; };
 		E39D6F8C20DC5A7B008FD5C5 /* com.denise.daemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = com.denise.daemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E39D6FA120DC7023008FD5C5 /* BrowserImpl.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; name = BrowserImpl.cpp; path = LaunchDaemon/browser/BrowserImpl.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +74,6 @@
 		1F8A80AC1C4EB0AF00971E9D = {
 			isa = PBXGroup;
 			children = (
-				E39D6FA120DC7023008FD5C5 /* BrowserImpl.cpp */,
 				E39D6F8220DC03A1008FD5C5 /* Client */,
 				1F8A80B71C4EB0AF00971E9D /* LaunchDaemon */,
 				1F8A80E81C4EDEA700971E9D /* Scripts */,
@@ -244,7 +241,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E39D6FA220DC7023008FD5C5 /* BrowserImpl.cpp in Sources */,
 				E39D6F9D20DC5AA8008FD5C5 /* main.cpp in Sources */,
 				E39D6F9E20DC5AA8008FD5C5 /* XPCService.cpp in Sources */,
 			);
