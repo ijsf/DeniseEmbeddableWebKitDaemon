@@ -10,13 +10,13 @@
             ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
             <ActionContent
                title = "Run Script"
-               scriptText = "launchctl unload /Library/LaunchDaemons/com.denise.daemon.plist&#10;&#10;sudo ${PROJECT_DIR}/Scripts/install.sh ${PROJECT_DIR} ${BUILT_PRODUCTS_DIR} &amp;&gt;/tmp/denise_build_post.log || osascript -e &apos;display notification &quot;Could not install LaunchDaemon. Did you configure sudoers?&quot; with title &quot;LaunchDaemon&quot;&apos;&#10;&#10;launchctl load /Library/LaunchDaemons/com.denise.daemon.plist&#10;">
+               scriptText = "#launchctl unload /Library/LaunchDaemons/com.denise.daemon.plist&#10;&#10;sudo ${PROJECT_DIR}/Scripts/install.sh ${PROJECT_DIR} ${BUILT_PRODUCTS_DIR} &amp;&gt;/tmp/denise_build_post.log || osascript -e &apos;display notification &quot;Could not install LaunchDaemon. Did you configure sudoers?&quot; with title &quot;LaunchDaemon&quot;&apos;&#10;&#10;#launchctl load /Library/LaunchDaemons/com.denise.daemon.plist&#10;">
                <EnvironmentBuildable>
                   <BuildableReference
                      BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "1F8A80B41C4EB0AF00971E9D"
-                     BuildableName = "com.denise.daemon"
-                     BlueprintName = "LaunchDaemon"
+                     BlueprintIdentifier = "E39D6F8B20DC5A7B008FD5C5"
+                     BuildableName = "com.denise.daemon.app"
+                     BlueprintName = "LaunchDaemonApp"
                      ReferencedContainer = "container:LaunchDaemon.xcodeproj">
                   </BuildableReference>
                </EnvironmentBuildable>
@@ -32,9 +32,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "1F8A80B41C4EB0AF00971E9D"
-               BuildableName = "com.denise.daemon"
-               BlueprintName = "LaunchDaemon"
+               BlueprintIdentifier = "E39D6F8B20DC5A7B008FD5C5"
+               BuildableName = "com.denise.daemon.app"
+               BlueprintName = "LaunchDaemonApp"
                ReferencedContainer = "container:LaunchDaemon.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -50,9 +50,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F8A80B41C4EB0AF00971E9D"
-            BuildableName = "com.denise.daemon"
-            BlueprintName = "LaunchDaemon"
+            BlueprintIdentifier = "E39D6F8B20DC5A7B008FD5C5"
+            BuildableName = "com.denise.daemon.app"
+            BlueprintName = "LaunchDaemonApp"
             ReferencedContainer = "container:LaunchDaemon.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -63,58 +63,22 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      debugAsWhichUser = "root"
-      launchStyle = "1"
+      launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
-      <PreActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "${PROJECT_DIR}/Scripts/start.sh&#10;&#10;">
-               <EnvironmentBuildable>
-                  <BuildableReference
-                     BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "1F8A80B41C4EB0AF00971E9D"
-                     BuildableName = "com.denise.daemon"
-                     BlueprintName = "LaunchDaemon"
-                     ReferencedContainer = "container:LaunchDaemon.xcodeproj">
-                  </BuildableReference>
-               </EnvironmentBuildable>
-            </ActionContent>
-         </ExecutionAction>
-      </PreActions>
-      <PostActions>
-         <ExecutionAction
-            ActionType = "Xcode.IDEStandardExecutionActionsCore.ExecutionActionType.ShellScriptAction">
-            <ActionContent
-               title = "Run Script"
-               scriptText = "${PROJECT_DIR}/Scripts/stop.sh">
-               <EnvironmentBuildable>
-                  <BuildableReference
-                     BuildableIdentifier = "primary"
-                     BlueprintIdentifier = "1F8A80B41C4EB0AF00971E9D"
-                     BuildableName = "com.denise.daemon"
-                     BlueprintName = "LaunchDaemon"
-                     ReferencedContainer = "container:LaunchDaemon.xcodeproj">
-                  </BuildableReference>
-               </EnvironmentBuildable>
-            </ActionContent>
-         </ExecutionAction>
-      </PostActions>
-      <MacroExpansion>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F8A80B41C4EB0AF00971E9D"
-            BuildableName = "com.denise.daemon"
-            BlueprintName = "LaunchDaemon"
+            BlueprintIdentifier = "E39D6F8B20DC5A7B008FD5C5"
+            BuildableName = "com.denise.daemon.app"
+            BlueprintName = "LaunchDaemonApp"
             ReferencedContainer = "container:LaunchDaemon.xcodeproj">
          </BuildableReference>
-      </MacroExpansion>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -128,9 +92,9 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "1F8A80B41C4EB0AF00971E9D"
-            BuildableName = "com.denise.daemon"
-            BlueprintName = "LaunchDaemon"
+            BlueprintIdentifier = "E39D6F8B20DC5A7B008FD5C5"
+            BuildableName = "com.denise.daemon.app"
+            BlueprintName = "LaunchDaemonApp"
             ReferencedContainer = "container:LaunchDaemon.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

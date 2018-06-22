@@ -7,4 +7,4 @@ launchctl unload /Library/LaunchDaemons/com.denise.daemon.plist
 rm /Library/LaunchDaemons/com.denise.daemon.plist
 
 # Remove the daemon's executable
-rm /Library/PrivilegedHelperTools/com.denise.daemon
+rm -rf /Library/PrivilegedHelperTools/com.denise.daemon.app
