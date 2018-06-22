@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		E38F481F20DD5278004D1899 /* Bundle */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = E38F482020DD5278004D1899 /* Build configuration list for PBXAggregateTarget "Bundle" */;
+			buildPhases = (
+				E38F482320DD5283004D1899 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = Bundle;
+			productName = Bundle;
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		E39D6F8420DC03AE008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F8320DC03AE008FD5C5 /* main.cpp */; };
 		E39D6F9D20DC5AA8008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6A20DBF4D9008FD5C5 /* main.cpp */; };
@@ -157,6 +171,10 @@
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = denise;
 				TargetAttributes = {
+					E38F481F20DD5278004D1899 = {
+						CreatedOnToolsVersion = 9.4;
+						ProvisioningStyle = Automatic;
+					};
 					E39D6F7520DC0303008FD5C5 = {
 						CreatedOnToolsVersion = 9.4;
 						ProvisioningStyle = Automatic;
@@ -182,6 +200,7 @@
 			targets = (
 				E39D6F7520DC0303008FD5C5 /* Client */,
 				E39D6F8B20DC5A7B008FD5C5 /* LaunchDaemonApp */,
+				E38F481F20DD5278004D1899 /* Bundle */,
 			);
 		};
 /* End PBXProject section */
@@ -195,6 +214,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E38F482320DD5283004D1899 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "sudo ${PROJECT_DIR}/Scripts/bundle.sh ${PROJECT_DIR} /Library/PrivilegedHelperTools/com.denise.daemon.app com.denise.daemon";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		E39D6F7220DC0303008FD5C5 /* Sources */ = {
@@ -314,6 +349,22 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		E38F482120DD5278004D1899 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		E38F482220DD5278004D1899 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -453,6 +504,15 @@
 			buildConfigurations = (
 				1F8A80BA1C4EB0AF00971E9D /* Debug */,
 				1F8A80BB1C4EB0AF00971E9D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E38F482020DD5278004D1899 /* Build configuration list for PBXAggregateTarget "Bundle" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E38F482120DD5278004D1899 /* Debug */,
+				E38F482220DD5278004D1899 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
