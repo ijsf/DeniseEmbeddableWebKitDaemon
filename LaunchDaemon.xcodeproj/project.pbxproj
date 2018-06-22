@@ -23,7 +23,7 @@
 /* Begin PBXBuildFile section */
 		E39D6F8420DC03AE008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F8320DC03AE008FD5C5 /* main.cpp */; };
 		E39D6F9D20DC5AA8008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6A20DBF4D9008FD5C5 /* main.cpp */; };
-		E39D6F9E20DC5AA8008FD5C5 /* XPCService.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6D20DC00A0008FD5C5 /* XPCService.cpp */; };
+		E39D6F9E20DC5AA8008FD5C5 /* XPCService.mm in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6D20DC00A0008FD5C5 /* XPCService.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,7 +45,7 @@
 		E32CD2A620DBC0E20079B646 /* start.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = start.sh; path = Scripts/start.sh; sourceTree = SOURCE_ROOT; };
 		E32CD2A720DBC2070079B646 /* stop.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; name = stop.sh; path = Scripts/stop.sh; sourceTree = SOURCE_ROOT; };
 		E39D6F6A20DBF4D9008FD5C5 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		E39D6F6D20DC00A0008FD5C5 /* XPCService.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = XPCService.cpp; sourceTree = "<group>"; };
+		E39D6F6D20DC00A0008FD5C5 /* XPCService.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = XPCService.mm; sourceTree = "<group>"; };
 		E39D6F6E20DC00A0008FD5C5 /* XPCService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = XPCService.h; sourceTree = "<group>"; };
 		E39D6F7620DC0303008FD5C5 /* Client */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Client; sourceTree = BUILT_PRODUCTS_DIR; };
 		E39D6F8320DC03AE008FD5C5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 			children = (
 				1F8A80C31C4EB3BE00971E9D /* daemon-Launchd.plist */,
 				E39D6F6A20DBF4D9008FD5C5 /* main.cpp */,
-				E39D6F6D20DC00A0008FD5C5 /* XPCService.cpp */,
+				E39D6F6D20DC00A0008FD5C5 /* XPCService.mm */,
 				E39D6F6E20DC00A0008FD5C5 /* XPCService.h */,
 			);
 			path = LaunchDaemon;
@@ -242,7 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E39D6F9D20DC5AA8008FD5C5 /* main.cpp in Sources */,
-				E39D6F9E20DC5AA8008FD5C5 /* XPCService.cpp in Sources */,
+				E39D6F9E20DC5AA8008FD5C5 /* XPCService.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
