@@ -24,6 +24,7 @@
 		E39D6F8420DC03AE008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F8320DC03AE008FD5C5 /* main.cpp */; };
 		E39D6F9D20DC5AA8008FD5C5 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6A20DBF4D9008FD5C5 /* main.cpp */; };
 		E39D6F9E20DC5AA8008FD5C5 /* XPCService.mm in Sources */ = {isa = PBXBuildFile; fileRef = E39D6F6D20DC00A0008FD5C5 /* XPCService.mm */; };
+		E3F49DB220DFCE1D006AFACE /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E3F49DB120DFCE1D006AFACE /* AppKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -51,6 +52,8 @@
 		E39D6F8320DC03AE008FD5C5 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		E39D6F8620DC0441008FD5C5 /* XPCClient.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XPCClient.h; sourceTree = "<group>"; };
 		E39D6F8C20DC5A7B008FD5C5 /* com.denise.daemon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = com.denise.daemon.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F49DAF20DFC9D5006AFACE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3F49DB120DFCE1D006AFACE /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +68,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E3F49DB220DFCE1D006AFACE /* AppKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +82,7 @@
 				1F8A80B71C4EB0AF00971E9D /* LaunchDaemon */,
 				1F8A80E81C4EDEA700971E9D /* Scripts */,
 				1F8A80B61C4EB0AF00971E9D /* Products */,
+				E3F49DB020DFCE1D006AFACE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -97,6 +102,7 @@
 				E39D6F6A20DBF4D9008FD5C5 /* main.cpp */,
 				E39D6F6D20DC00A0008FD5C5 /* XPCService.mm */,
 				E39D6F6E20DC00A0008FD5C5 /* XPCService.h */,
+				E3F49DAF20DFC9D5006AFACE /* Info.plist */,
 			);
 			path = LaunchDaemon;
 			sourceTree = "<group>";
@@ -120,6 +126,14 @@
 				E39D6F8320DC03AE008FD5C5 /* main.cpp */,
 			);
 			path = Client;
+			sourceTree = "<group>";
+		};
+		E3F49DB020DFCE1D006AFACE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E3F49DB120DFCE1D006AFACE /* AppKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -442,7 +456,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				HEADER_SEARCH_PATHS = ./vendor/webkitgtk_denise/Tools;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "$(SRCROOT)/LaunchDaemon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../libs";
 				LIBRARY_SEARCH_PATHS = ./vendor/webkitgtk_denise/build/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
@@ -480,7 +494,7 @@
 				DEVELOPMENT_TEAM = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				HEADER_SEARCH_PATHS = ./vendor/webkitgtk_denise/Tools;
-				INFOPLIST_FILE = "";
+				INFOPLIST_FILE = "$(SRCROOT)/LaunchDaemon/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../libs";
 				LIBRARY_SEARCH_PATHS = ./vendor/webkitgtk_denise/build/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.10;
