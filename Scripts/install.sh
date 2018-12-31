@@ -15,6 +15,11 @@ do
   chmod 644 ${trg}
 done
 
+echo *** Cleaning up
+
+rm -rf ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}/Contents/libs
+rm -rf /Library/PrivilegedHelperTools/${APP_BUNDLE_NAME}
+
 echo *** Bundling ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}
 
 mkdir -p ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}/Contents/libs
