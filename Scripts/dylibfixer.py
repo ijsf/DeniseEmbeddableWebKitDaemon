@@ -1,12 +1,77 @@
 #!/usr/bin/python
-
+#
+# Python replacement for dylibbundler.
+#
+# Copyright (c) C.E. Etheredge, ijsf, 2018
+# All rights reserved.
+# 
+# Redistribution and use in source and binary forms, with or without
+# modification, are permitted provided that the following conditions are met:
+# 
+# 1. Redistributions of source code must retain the above copyright notice, this
+#    list of conditions and the following disclaimer.
+# 2. Redistributions in binary form must reproduce the above copyright notice,
+#    this list of conditions and the following disclaimer in the documentation
+#    and/or other materials provided with the distribution.
+# 
+# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+# ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+# WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+# DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR
+# ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+# (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+# LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+# ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+# (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+# SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+# 
 import os
 import sys
 import re
 import subprocess
-from argparse import ArgumentParser
+from argparse import ArgumentParser, RawTextHelpFormatter
 from shutil import copyfile
 from collections import namedtuple
+
+DESCRIPTION="""
+dylibfixer recursively processes the dylib dependency tree of a Mach-O binary,
+producing a single bundle directory containing the entire dependency tree.
+
+It does so by copying all nested dependencies to a given directory, changing
+all references accordingly, so that a self-containing bundle can be produced
+that can be used across multiple macOS systems without relying on any
+non-standard system installed libraries.
+
+To produce a self-contained app bundle, make sure to:
+
+  1. Specify a destination directory that is part of the app bundle directory
+     structure.
+  2. Specify a ldpath directory that references (1) without using any absolute
+     paths. The use of @executable_path or @loader_path is recommended, and
+	 will typically refer to your bundle executable directory:
+	   * Use @executable_path for standard (standalone) applications.
+	   * Use @loader_path if @executable_path doesn't work, e.g. when your
+	   	 binary itself is dynamically loaded by another executable.
+	 This path will be used at run-time to dynamically load the dylibs!
+  3. Optionally specify any library directories (-l) in order to find your
+     dylibs (e.g. /usr/local/lib).
+
+EXAMPLE USE CASE
+
+  Bundle root:        ./com.mybundle.app
+  Bundle executable:  ./com.mybundle.app/Contents/MacOS/com.mybundle
+  Destination path:   ./com.mybundle.app/Contents/libs (new directory)
+  Destination ldpath: @loader_path/../libs
+
+  dylibfixer.py -b ./com.mybundle.app/Contents/MacOS/com.mybundle
+                -d ./com.mybundle.app/Contents/libs
+				-r @loader_path/../libs
+				-l ./SomeBuildDirectoryContainingLibFiles
+				-l /usr/local/lib
+
+  The above should produce a self-contained com.mybundle.app, with
+  all dylibs contained in directory ./com.mybundle.app/Contents/libs.
+"""
 
 #
 # NOTES
@@ -116,7 +181,7 @@ def path_resolve_otool(path_otool, path_dest, map_resolve):
 	return path_otool
 
 # Resolve otool deps recursively
-def otool_resolve(path_binary, path_binary_original, path_dest, rpath_dest, map_resolve, paths_library, visited = [], level = 0):
+def otool_resolve(path_binary, path_binary_original, path_dest, ldpath_dest, map_resolve, paths_library, visited = [], level = 0):
 	# Resolve to absolute path and basename
 	path_binary = os.path.abspath(path_binary)
 	path_basename = os.path.basename(path_binary)
@@ -142,7 +207,7 @@ def otool_resolve(path_binary, path_binary_original, path_dest, rpath_dest, map_
 		# If this dep is not excluded from further processing
 		if not path_dylib_exclude(dep_path):
 			# In any case, change the dep's path in the binary to the destination dir
-			install_name_tool_change(path_binary, dep.src, os.path.join(rpath_dest, dep_basename))
+			install_name_tool_change(path_binary, dep.src, os.path.join(ldpath_dest, dep_basename))
 			# Skip itself for further processing
 			if not dep_basename == path_basename:
 				# Check if path to binary exists
@@ -168,14 +233,14 @@ def otool_resolve(path_binary, path_binary_original, path_dest, rpath_dest, map_
 					# Change id of the newly copied dependency
 					install_name_tool_id(dep_dest, dep_basename)
 					# Resolve newly copied dependency recursively
-					otool_resolve(dep_dest, dep_path, path_dest, rpath_dest, m, paths_library, visited, level + 1)
+					otool_resolve(dep_dest, dep_path, path_dest, ldpath_dest, m, paths_library, visited, level + 1)
 
 ### Main
 
-parser = ArgumentParser()
+parser = ArgumentParser(description=DESCRIPTION, formatter_class=RawTextHelpFormatter)
 parser.add_argument("-b", "--bundle", dest="bundle", help="path to app bundle binary", metavar="PATH", required=True)
 parser.add_argument("-d", "--dest-dir", dest="path_dest", help="path to dependency destination directory", metavar="PATH", required=True)
-parser.add_argument("-r", "--dest-rpath", dest="rpath_dest", help="rpath to dependency destination directory", metavar="RPATH", required=True)
+parser.add_argument("-r", "--dest-ldpath", dest="ldpath_dest", help="ldpath to dependency destination directory", metavar="LDPATH", required=True)
 parser.add_argument("-l", "--library-dir", dest="paths_library", help="include library directory to search for missing dependencies", metavar="PATH", action="append")
 args = parser.parse_args()
 
@@ -194,4 +259,4 @@ map_resolve = {
 	'executable_path': executable_path,
 	'rpath': args.path_dest #rpath
 }
-otool_resolve(args.bundle, args.bundle, args.path_dest, args.rpath_dest, map_resolve, args.paths_library)
+otool_resolve(args.bundle, args.bundle, args.path_dest, args.ldpath_dest, map_resolve, args.paths_library)
