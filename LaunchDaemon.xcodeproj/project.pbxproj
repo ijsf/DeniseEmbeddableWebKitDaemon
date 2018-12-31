@@ -11,7 +11,6 @@
 			isa = PBXAggregateTarget;
 			buildConfigurationList = E38F482020DD5278004D1899 /* Build configuration list for PBXAggregateTarget "Bundle" */;
 			buildPhases = (
-				E38F482320DD5283004D1899 /* ShellScript */,
 			);
 			dependencies = (
 			);
@@ -163,6 +162,7 @@
 				E39D6F8820DC5A7B008FD5C5 /* Sources */,
 				E39D6F8920DC5A7B008FD5C5 /* Frameworks */,
 				E39D6F8A20DC5A7B008FD5C5 /* Resources */,
+				E3822F5921DA56320082B096 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -227,7 +227,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		E38F482320DD5283004D1899 /* ShellScript */ = {
+		E3822F5921DA56320082B096 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -238,7 +238,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "sudo ${PROJECT_DIR}/Scripts/bundle.sh ${PROJECT_DIR} /Library/PrivilegedHelperTools/com.denise.daemon.app com.denise.daemon";
+			shellScript = "#launchctl unload /Library/LaunchDaemons/com.denise.daemon.plist\n\nsudo ${PROJECT_DIR}/Scripts/install.sh ${PROJECT_DIR} ${BUILT_PRODUCTS_DIR}\n\n#launchctl load /Library/LaunchDaemons/com.denise.daemon.plist";
 		};
 /* End PBXShellScriptBuildPhase section */
 

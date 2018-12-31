@@ -15,9 +15,13 @@ do
   chmod 644 ${trg}
 done
 
-# Fix bundle
-#${PROJECT_DIR}/Scripts/bundle.sh ${PROJECT_DIR} ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME} ${APP_BUNDLE_EXECUTABLE}
+echo *** Bundling ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}
+
+mkdir -p ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}/Contents/libs
+python ${PROJECT_DIR}/Scripts/dylibfixer.py -b ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}/Contents/MacOS/${APP_BUNDLE_EXECUTABLE} -d ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}/Contents/libs -r "@loader_path/../libs" -l ${PROJECT_DIR}/vendor/webkitgtk_denise/build/lib -l /usr/local/lib || exit 1
+
+echo *** Installing ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME} to /Library/PrivilegedHelperTools
 
 # Copy the daemon into /Library/PrivilegedHelperTools
-cp -rf ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME} /Library/PrivilegedHelperTools
-chown -R root:admin /Library/PrivilegedHelperTools/${APP_BUNDLE_NAME}
+cp -rf ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME} /Library/PrivilegedHelperTools || exit 1
+chown -R root:admin /Library/PrivilegedHelperTools/${APP_BUNDLE_NAME} || exit 1
