@@ -17,7 +17,6 @@ done
 
 echo *** Cleaning up
 
-rm -rf ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME}/Contents/libs
 rm -rf /Library/PrivilegedHelperTools/${APP_BUNDLE_NAME}
 
 echo *** Installing ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME} to /Library/PrivilegedHelperTools
