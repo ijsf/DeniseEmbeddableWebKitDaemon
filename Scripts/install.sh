@@ -29,4 +29,8 @@ echo *** Installing ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME} to /Library/Privile
 
 # Copy the daemon into /Library/PrivilegedHelperTools
 cp -rf ${BUILT_PRODUCTS_DIR}/${APP_BUNDLE_NAME} /Library/PrivilegedHelperTools || exit 1
-chown -R root:admin /Library/PrivilegedHelperTools/${APP_BUNDLE_NAME} || exit 1
+
+# Set correct permissions -- if this is not done correctly, XPC will fail!
+chown -R root:wheel /Library/PrivilegedHelperTools/${APP_BUNDLE_NAME} || exit 1
+chmod -R 0700 /Library/PrivilegedHelperTools/${APP_BUNDLE_NAME} || exit 1
+

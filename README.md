@@ -8,6 +8,10 @@ Whenever LaunchDaemonApp is built, a post script (Run Script in Targets -> Launc
 
 This post-action requires that your current user is part of the no password sudoers file!
 
+## Errors
+
+If any errors occur, head over to the `webkitgtk_denise` repository and read the documentation. 
+
 ## Start and stop
 
 Two options:
