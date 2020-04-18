@@ -1,4 +1,8 @@
-# LaunchDaemon
+# EmbeddableWebKitDaemon
+
+This is an example daemon service that embeds the EmbeddableWebKit component and provides a XPC service to which clients can talk. This example was made to show that certain constrained macOS applications (such as VST plugins) can also make use of an embedded browser simply by talking to an XPC service. This code was developed for a prototype that is no longer functional, and is therefore open sourced. This repository is currently unmaintained.
+
+---
 
 Open LaunchDaemon.xcodeproj, this project contains both the LaunchDaemonApp and LaunchDaemon.
 
